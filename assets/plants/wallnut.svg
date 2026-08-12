@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <!-- 巨石质感 -->
+    <radialGradient id="rock" cx="0.4" cy="0.3" r="0.9">
+      <stop offset="0" stop-color="#7a7a6a"/>
+      <stop offset="0.5" stop-color="#5a5a4c"/>
+      <stop offset="1" stop-color="#2e2e26"/>
+    </radialGradient>
+    <radialGradient id="rock2" cx="0.5" cy="0.4" r="0.8">
+      <stop offset="0" stop-color="#6a6a5c"/>
+      <stop offset="1" stop-color="#3a3a30"/>
+    </radialGradient>
+    <!-- 苔藓 -->
+    <radialGradient id="moss" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#4a6428" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#1a2410" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="50" cy="90" rx="42" ry="8" fill="#000" opacity="0.5"/>
+
+  <!-- 巨石主体（大圆岩壁） -->
+  <ellipse cx="50" cy="52" rx="42" ry="40" fill="url(#rock)" stroke="#1e1e18" stroke-width="3.5"/>
+  <!-- 副岩块贴合（拼缝质感） -->
+  <path d="M50,12 Q72,16 80,36 Q60,30 50,26 Z" fill="url(#rock2)" stroke="#1e1e18" stroke-width="2" opacity="0.9"/>
+
+  <!-- 岩石表面的风化坑/裂纹 -->
+  <g fill="#3a3a30" opacity="0.7">
+    <circle cx="30" cy="58" r="3.5"/><circle cx="56" cy="74" r="3"/><circle cx="68" cy="46" r="3"/>
+    <circle cx="44" cy="32" r="2.5"/><circle cx="70" cy="66" r="2.2"/><circle cx="26" cy="42" r="2.2"/>
+  </g>
+  <!-- 深裂纹 -->
+  <path d="M56,20 L52,38 L60,52 L54,66 L58,80" fill="none" stroke="#1e1e18" stroke-width="3" stroke-linecap="round"/>
+  <path d="M26,44 L38,50 L34,62" fill="none" stroke="#1e1e18" stroke-width="3" stroke-linecap="round"/>
+  <!-- 苔藓斑 -->
+  <ellipse cx="70" cy="30" rx="12" ry="8" fill="url(#moss)"/>
+  <ellipse cx="28" cy="66" rx="9" ry="7" fill="url(#moss)"/>
+  <ellipse cx="50" cy="84" rx="16" ry="6" fill="url(#moss)"/>
+
+  <!-- 拟人坚毅脸（腐化岩石巨人） -->
+  <!-- 凹陷眼窟 -->
+  <ellipse cx="38" cy="46" rx="8" ry="7.5" fill="#14140e"/>
+  <ellipse cx="62" cy="46" rx="8" ry="7.5" fill="#14140e"/>
+  <!-- 幽暗黄眼 -->
+  <circle cx="38" cy="46" r="3.4" fill="#b89a2a" opacity="0.8"/>
+  <circle cx="62" cy="46" r="3.4" fill="#b89a2a" opacity="0.8"/>
+  <circle cx="38.8" cy="45" r="1.2" fill="#e8d858" opacity="0.6"/>
+  <circle cx="62.8" cy="45" r="1.2" fill="#e8d858" opacity="0.6"/>
+  <!-- 眼周深陷 -->
+  <ellipse cx="38" cy="40" rx="6" ry="2.5" fill="#1a1a12" opacity="0.8"/>
+  <ellipse cx="62" cy="40" rx="6" ry="2.5" fill="#1a1a12" opacity="0.8"/>
+  <!-- 额上裂纹 -->
+  <path d="M45,32 L50,28 L56,32" fill="none" stroke="#1a1a12" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/>
+  <!-- 抿嘴（坚毅） -->
+  <path d="M40,62 Q50,67 60,62" fill="none" stroke="#14140e" stroke-width="3" stroke-linecap="round"/>
+  <!-- 嘴下碎纹 -->
+  <path d="M44,68 L46,72 M56,68 L54,72" stroke="#1a1a12" stroke-width="1.6" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- 身侧碎岩（拟小手） -->
+  <ellipse cx="12" cy="62" rx="8" ry="6" fill="url(#rock2)" stroke="#1e1e18" stroke-width="2"/>
+  <ellipse cx="88" cy="62" rx="8" ry="6" fill="url(#rock2)" stroke="#1e1e18" stroke-width="2"/>
+
+  <!-- 顶部枯芽 -->
+  <path d="M50,10 Q52,2 58,2" fill="none" stroke="#3a4a22" stroke-width="2.6" stroke-linecap="round"/>
+  <circle cx="57" cy="2" r="2" fill="#3a4a22"/>
+
+  <g fill="#8a9c6c" opacity="0.1"><circle cx="10" cy="22" r="2"/><circle cx="90" cy="18" r="1.6"/></g>
+</svg>

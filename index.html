@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌻 植物大战僵尸 - 乡村版</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="sky">
+  <div id="skySun"></div>
+  <div class="cloud c1"></div>
+  <div class="cloud c2"></div>
+  <div class="cloud c3"></div>
+  <div class="bird b1"></div>
+  <div class="bird b2"></div>
+  <div class="windmill">
+    <div class="wm-body"></div>
+    <div class="wm-blades"></div>
+  </div>
+  <div class="hill h1"></div>
+  <div class="hill h2"></div>
+  <div id="fence"></div>
+</div>
+
+<div id="game">
+  <div id="stageName" class="hidden"></div>
+
+  <div id="hud">
+    <div id="sunDisplay">☀️ <span id="sunCount">150</span></div>
+    <div id="waveDisplay">🌊 第 <span id="waveNum">1</span> 波</div>
+    <div id="scoreDisplay">🏆 <span id="score">0</span></div>
+    <div id="btnPause" class="hud-btn">⏸ 暂停</div>
+    <div id="btnStart" class="hud-btn primary">▶ 开始</div>
+  </div>
+
+  <!-- BOSS 血条 -->
+  <div id="bossBar" class="hidden">
+    <span class="boss-label">👿 BOSS</span>
+    <div class="boss-track"><div id="bossFill"></div></div>
+  </div>
+
+  <div id="sidebar">
+    <div class="card" data-plant="sunflower" data-cost="50">
+      <span class="card-cd"></span>
+      <div class="card-emoji"><img src="assets/plants/sunflower.svg" alt="向日葵"></div>
+      <div class="card-name">向日葵</div>
+      <div class="card-cost">50</div>
+    </div>
+    <div class="card" data-plant="peashooter" data-cost="100">
+      <span class="card-cd"></span>
+      <div class="card-emoji"><img src="assets/plants/peashooter.svg" alt="豌豆射手"></div>
+      <div class="card-name">豌豆射手</div>
+      <div class="card-cost">100</div>
+    </div>
+    <div class="card" data-plant="snowpea" data-cost="175">
+      <span class="card-cd"></span>
+      <div class="card-emoji"><img src="assets/plants/snowpea.svg" alt="寒冰射手"></div>
+      <div class="card-name">寒冰射手</div>
+      <div class="card-cost">175</div>
+    </div>
+    <div class="card" data-plant="repeater" data-cost="200">
+      <span class="card-cd"></span>
+      <div class="card-emoji"><img src="assets/plants/repeater.svg" alt="双发射手"></div>
+      <div class="card-name">双发射手</div>
+      <div class="card-cost">200</div>
+    </div>
+    <div class="card" data-plant="wallnut" data-cost="50">
+      <span class="card-cd"></span>
+      <div class="card-emoji"><img src="assets/plants/wallnut.svg" alt="坚果墙"></div>
+      <div class="card-name">坚果墙</div>
+      <div class="card-cost">50</div>
+    </div>
+    <div class="card" data-plant="cherry" data-cost="150">
+      <span class="card-cd"></span>
+      <div class="card-emoji"><img src="assets/plants/cherry.svg" alt="樱桃炸弹"></div>
+      <div class="card-name">樱桃炸弹</div>
+      <div class="card-cost">150</div>
+    </div>
+    <div class="card" data-plant="potatomine" data-cost="25">
+      <span class="card-cd"></span>
+      <div class="card-emoji"><img src="assets/plants/potatomine.svg" alt="土豆雷"></div>
+      <div class="card-name">土豆雷</div>
+      <div class="card-cost">25</div>
+    </div>
+    <div class="card" data-plant="torchwood" data-cost="175">
+      <span class="card-cd"></span>
+      <div class="card-emoji"><img src="assets/plants/torchwood.svg" alt="火炬树桩"></div>
+      <div class="card-name">火炬树桩</div>
+      <div class="card-cost">175</div>
+    </div>
+    <div class="card shovel" id="shovelCard">
+      <div class="card-emoji">🪓</div>
+      <div class="card-name">铲子</div>
+    </div>
+    <div class="card-message" id="cardMsg"></div>
+  </div>
+
+  <div id="board">
+    <div id="mower" class="hidden">🚜</div>
+    <!-- 手绘风房子 -->
+    <div id="house">
+      <div class="roof"></div>
+      <div class="chimney"></div>
+      <div class="h-body">
+        <div class="window w1"></div>
+        <div class="window w2"></div>
+        <div class="door"></div>
+        <div class="sign">🏠 家</div>
+      </div>
+    </div>
+    <!-- 草坪装饰：草丛/石子/花/小路 -->
+    <div class="lawn-deco deco1"><span class="bloom"></span></div>
+    <div class="lawn-deco deco2"><span class="bloom"></span></div>
+    <div class="lawn-deco deco3"><span class="bloom"></span></div>
+    <div class="lawn-deco deco4"><span class="bloom"></span></div>
+    <div class="lawn-deco deco5"><span class="bloom"></span></div>
+    <div class="lawn-deco deco6"><span class="bloom"></span></div>
+    <div class="lawn-deco stone-deco"></div>
+    <div id="soilBand"></div>
+    <div id="gravestone" class="hidden">🪦</div>
+    <div id="warningBanner" class="hidden">⚠️ 一大波僵尸正在靠近！⚠️</div>
+  </div>
+
+  <!-- 关卡选择 -->
+  <div id="levelScreen" class="overlay">
+    <h1 class="title">🌻<span>选择关卡</span>🧟</h1>
+    <div id="levelList"></div>
+  </div>
+
+  <div id="startScreen" class="overlay hidden">
+    <h1 class="title">🌻<span>植物大战僵尸</span>🧟</h1>
+    <p class="subtitle" id="startSub">保卫你的花园与脑子！</p>
+    <div class="start-tips">
+      <p>☀️ 点击收集阳光</p>
+      <p>🌱 选卡后点击草地种植</p>
+      <p>🧟 别让僵尸走到最左边</p>
+    </div>
+    <button id="btnPlay">进入关卡</button>
+  </div>
+
+  <div id="victoryScreen" class="overlay hidden">
+    <h1 class="title">🎉<span>过关！</span></h1>
+    <p id="victoryInfo">得分：0</p>
+    <button id="btnNext">下一关</button>
+  </div>
+
+  <div id="gameOver" class="overlay hidden">
+    <h1 id="overTitle">游戏结束</h1>
+    <p id="overScore">得分：0</p>
+    <button id="btnRestart">重试本关</button>
+  </div>
+</div>
+<script src="game.js"></script>
+</body>
+</html>

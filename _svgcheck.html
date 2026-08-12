@@ -1,0 +1,16 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"></head>
+<body style="background:#333;padding:20px">
+<h2 style="color:#fff">SVG 角色样板验证</h2>
+<div style="display:flex;gap:40px;align-items:flex-end">
+  <div title="向日葵"><img src="assets/plants/sunflower.svg" width="90" height="90"></div>
+  <div title="豌豆射手"><img src="assets/plants/peashooter.svg" width="90" height="90"></div>
+  <div title="僵尸"><img src="assets/zombies/normal.svg" width="70" height="90"></div>
+</div>
+<div id="msg" style="color:#9f9"></div>
+<script>
+var m=document.getElementById('msg');
+var imgs=document.querySelectorAll('img');
+var ok=0;
+imgs.forEach(function(im){ im.onload=function(){ok++;document.getElementById('msg').textContent='已加载 '+ok+'/'+imgs.length;}; im.onerror=function(){document.getElementById('msg').textContent+=' 加载失败: '+im.src+' ';}; });
+</script>
+</body></html>

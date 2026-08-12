@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 130" width="62" height="80">
+  <defs>
+    <radialGradient id="flesh" cx="0.42" cy="0.3" r="0.8">
+      <stop offset="0" stop-color="#8a9c6c"/>
+      <stop offset="0.5" stop-color="#5a6a44"/>
+      <stop offset="0.8" stop-color="#3a4428"/>
+      <stop offset="1" stop-color="#1c2212"/>
+    </radialGradient>
+    <radialGradient id="robe" cx="0.45" cy="0.15" r="1.1">
+      <stop offset="0" stop-color="#5c5538"/>
+      <stop offset="0.5" stop-color="#3a3420"/>
+      <stop offset="1" stop-color="#1a150c"/>
+    </radialGradient>
+    <radialGradient id="blood" cx="0.4" cy="0.4" r="0.7">
+      <stop offset="0" stop-color="#6a1414"/>
+      <stop offset="1" stop-color="#320606" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="50" cy="122" rx="28" ry="6" fill="#000" opacity="0.5"/>
+
+  <!-- 腿 -->
+  <g stroke="#241a10" stroke-width="9" stroke-linecap="round" fill="none">
+    <path d="M42,106 L38,124"/><path d="M58,106 L62,122"/>
+  </g>
+
+  <!-- 灰金破袍 -->
+  <path d="M32,54 L28,112 Q50,122 72,110 L68,52 Q50,42 32,54 Z" fill="url(#robe)" stroke="#0e0a04" stroke-width="2.5"/>
+  <!-- 袍血污 -->
+  <ellipse cx="42" cy="80" rx="10" ry="8" fill="url(#blood)"/>
+  <ellipse cx="60" cy="102" rx="13" ry="8" fill="url(#blood)"/>
+  <!-- 袍皱 -->
+  <g stroke="#1a150c" stroke-width="1.5" stroke-linecap="round" opacity="0.5">
+    <path d="M38,76 Q48,82 62,78 M38,88 Q50,95 63,90"/>
+  </g>
+
+  <!-- 胸前补子 -->
+  <g>
+    <rect x="40" y="56" width="20" height="22" rx="2" fill="#18120c" stroke="#6a5420" stroke-width="1.6" opacity="0.9"/>
+    <path d="M50,61 L55,66 L50,71 L45,66 Z" fill="#9a7a28" stroke="#5a4416" stroke-width="1" opacity="0.7"/>
+    <ellipse cx="52" cy="65" rx="5" ry="4" fill="url(#blood)" opacity="0.8"/>
+  </g>
+
+  <!-- 左臂前伸 -->
+  <g stroke="url(#robe)" stroke-width="12" stroke-linecap="round" fill="none">
+    <path d="M36,68 Q14,70 4,54"/>
+  </g>
+  <g>
+    <path d="M3,48 L-2,62 L8,66 L10,50 Z" fill="url(#robe)" stroke="#0e0a04" stroke-width="1.5"/>
+    <path d="M8,53 L15,48 M9,57 L17,55" stroke="#d8d0bc" stroke-width="2.6" stroke-linecap="round"/>
+    <circle cx="5" cy="56" r="3" fill="#c8c0a8" opacity="0.8"/>
+  </g>
+
+  <!-- 右臂高举招魂幡 -->
+  <g stroke="url(#robe)" stroke-width="10" stroke-linecap="round" fill="none">
+    <path d="M62,66 L76,40"/>
+  </g>
+  <!-- 幡杆 -->
+  <line x1="79" y1="8" x2="76" y2="42" stroke="#4a3a1a" stroke-width="5" stroke-linecap="round"/>
+  <!-- 破旧招魂幡(断裂白布) -->
+  <g>
+    <path d="M79,10 L57,4 L61,26 L79,24 Z" fill="#c0b8a0" stroke="#6a6250" stroke-width="2"/>
+    <!-- 幡上破口 -->
+    <path d="M64,8 L69,14 L60,16" fill="#54482c" stroke="#54482c" stroke-width="0"/>
+    <path d="M79,12 L57,7" stroke="#3a3424" stroke-width="1" opacity="0.7"/>
+    <!-- 幡上朱字"魂"(褪色残破) -->
+    <path d="M69,11 L76,12 M72,10 L73,19" stroke="#8a1e1e" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/>
+    <line x1="65" y1="20" x2="77" y2="20" stroke="#8a1e1e" stroke-width="1.4" opacity="0.7"/>
+    <!-- 幡摆血污 -->
+    <ellipse cx="63" cy="18" rx="5" ry="4" fill="url(#blood)" opacity="0.7"/>
+  </g>
+
+  <!-- 头(腐烂低垂) -->
+  <g transform="rotate(5 50 32)">
+    <ellipse cx="50" cy="32" rx="20" ry="21" fill="url(#flesh)" stroke="#202612" stroke-width="2"/>
+    <ellipse cx="42" cy="31" rx="8" ry="7" fill="#0a0a06"/>
+    <ellipse cx="58" cy="31" rx="8" ry="7" fill="#0a0a06"/>
+    <circle cx="43" cy="31" r="2.4" fill="#a01616"/>
+    <circle cx="59" cy="31" r="2.4" fill="#a01616"/>
+    <path d="M49,38 L48,42 L52,41" fill="none" stroke="#a89c80" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M42,45 Q50,54 58,44" fill="#180c06" stroke="#0a0603" stroke-width="1.5"/>
+    <path d="M45,45 L47,53 L51,46 Z" fill="#dcd4c0" stroke="#a89c80" stroke-width="1"/>
+    <ellipse cx="51" cy="50" rx="5" ry="3.5" fill="url(#blood)"/>
+  </g>
+
+  <!-- 暗红帽 -->
+  <path d="M33,20 Q50,8 67,20 Q50,12 33,20 Z" fill="#241c2e" stroke="#0e0a14" stroke-width="2"/>
+  <circle cx="50" cy="14" r="3" fill="#8a1a1a" stroke="#3a0808" stroke-width="1.2"/>
+  <path d="M50,14 L50,4" stroke="#7a1414" stroke-width="2.2" stroke-linecap="round"/>
+
+  <!-- 额上符 -->
+  <g transform="rotate(-6 50 18)">
+    <rect x="41" y="12" width="20" height="22" rx="2" fill="#b89a2a" stroke="#6a5410" stroke-width="1.4" opacity="0.9"/>
+    <path d="M45,16 L53,17 M44,21 L51,22 M46,26 L53,27" stroke="#6a1010" stroke-width="1.6" stroke-linecap="round" opacity="0.8"/>
+  </g>
+
+  <g fill="#8a9c6c" opacity="0.08"><circle cx="10" cy="30" r="2"/><circle cx="80" cy="20" r="1.5"/></g>
+</svg>

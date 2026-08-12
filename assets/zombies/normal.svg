@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 130" width="62" height="80">
+  <defs>
+    <!-- 腐肉皮肤 -->
+    <radialGradient id="flesh" cx="0.42" cy="0.3" r="0.8">
+      <stop offset="0" stop-color="#8a9c6c"/>
+      <stop offset="0.45" stop-color="#5a6a44"/>
+      <stop offset="0.8" stop-color="#3a4428"/>
+      <stop offset="1" stop-color="#1c2212"/>
+    </radialGradient>
+    <!-- 腐败血袍 -->
+    <radialGradient id="robe" cx="0.45" cy="0.15" r="1.1">
+      <stop offset="0" stop-color="#4a3426"/>
+      <stop offset="0.5" stop-color="#30201a"/>
+      <stop offset="1" stop-color="#140c08"/>
+    </radialGradient>
+    <!-- 血污 -->
+    <radialGradient id="blood" cx="0.4" cy="0.4" r="0.7">
+      <stop offset="0" stop-color="#6a1414"/>
+      <stop offset="1" stop-color="#320606" stop-opacity="0"/>
+    </radialGradient>
+    <!-- 眼窟 -->
+    <radialGradient id="eye" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#0a0a06"/>
+      <stop offset="1" stop-color="#2a1408"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 地面暗影 -->
+  <ellipse cx="50" cy="122" rx="30" ry="6" fill="#000" opacity="0.5"/>
+
+  <!-- 双腿（枯骨透袍缝） -->
+  <g stroke="#241a10" stroke-width="9" stroke-linecap="round" fill="none">
+    <path d="M42,106 L38,124"/>
+    <path d="M58,106 L62,122"/>
+  </g>
+  <!-- 腿部外露腐肉 -->
+  <ellipse cx="41" cy="120" rx="4" ry="6" fill="url(#flesh)" opacity="0.7"/>
+  <ellipse cx="60" cy="118" rx="4" ry="6" fill="url(#flesh)" opacity="0.7"/>
+
+  <!-- 破败血袍 -->
+  <path d="M32,52 L28,112 Q50,122 72,110 L68,52 Q50,42 32,52 Z" fill="url(#robe)" stroke="#0e0804" stroke-width="2.5"/>
+  <!-- 袍上破口/撕裂 -->
+  <path d="M36,62 L42,58 L39,66 L47,62 L40,70" fill="#241a14" stroke="#0e0804" stroke-width="1"/>
+  <path d="M58,92 L66,88 L63,98 L72,93 L64,102" fill="#241a14" stroke="#0e0804" stroke-width="1"/>
+  <!-- 袍上大片血污 -->
+  <ellipse cx="42" cy="76" rx="12" ry="9" fill="url(#blood)"/>
+  <ellipse cx="60" cy="102" rx="16" ry="10" fill="url(#blood)"/>
+  <ellipse cx="50" cy="58" rx="8" ry="5" fill="url(#blood)" opacity="0.6"/>
+  <!-- 血滴 -->
+  <circle cx="36" cy="90" r="2" fill="#521010"/>
+  <circle cx="66" cy="84" r="1.6" fill="#521010"/>
+
+  <!-- 胸前补子（破旧褪色） -->
+  <g>
+    <rect x="40" y="56" width="20" height="22" rx="2" fill="#18120c" stroke="#5a4a22" stroke-width="1.6" opacity="0.9"/>
+    <path d="M50,60 L55,65 L50,70 L45,65 Z" fill="#8a6a20" stroke="#5a4416" stroke-width="1" opacity="0.7"/>
+    <!-- 补子上血污 -->
+    <ellipse cx="52" cy="63" rx="6" ry="5" fill="url(#blood)" opacity="0.8"/>
+  </g>
+
+  <!-- 左臂（前伸，暴露白骨） -->
+  <g stroke="url(#robe)" stroke-width="12" stroke-linecap="round" fill="none">
+    <path d="M36,68 Q14,70 4,54"/>
+  </g>
+  <!-- 袖口破损露白骨 -->
+  <g>
+    <path d="M3,48 L-2,62 L8,66 L10,50 Z" fill="url(#robe)" stroke="#0e0804" stroke-width="1.5"/>
+    <!-- 白骨指尖 -->
+    <path d="M8,53 L15,48 M9,57 L17,55 M8,60 L14,62" stroke="#d8d0bc" stroke-width="2.6" stroke-linecap="round"/>
+    <circle cx="5" cy="56" r="3" fill="#c8c0a8" opacity="0.8"/>
+  </g>
+
+  <!-- 右臂 -->
+  <g stroke="url(#robe)" stroke-width="12" stroke-linecap="round" fill="none">
+    <path d="M64,68 Q86,70 96,56"/>
+  </g>
+  <g>
+    <path d="M96,50 L102,64 L92,68 L90,52 Z" fill="url(#robe)" stroke="#0e0804" stroke-width="1.5"/>
+    <path d="M91,54 L83,50 M90,58 L81,56 M91,61 L83,62" stroke="#d8d0bc" stroke-width="2.6" stroke-linecap="round"/>
+    <circle cx="95" cy="57" r="3" fill="#c8c0a8" opacity="0.8"/>
+  </g>
+
+  <!-- 头：腐烂青黑脸 -->
+  <g transform="rotate(4 50 32)">
+    <!-- 腐肉头颅 -->
+    <ellipse cx="50" cy="33" rx="21" ry="22" fill="url(#flesh)" stroke="#202612" stroke-width="2"/>
+    <!-- 左脸剥落露出皮下白骨 -->
+    <path d="M62,24 Q67,33 60,42 Q55,47 50,46 Q58,50 64,42 Q70,32 62,24 Z"
+          fill="#c8c0a8" stroke="#a89c80" stroke-width="1.2" opacity="0.95"/>
+    <!-- 塌陷眼眶（黑窟） -->
+    <ellipse cx="42" cy="32" rx="8.5" ry="7.5" fill="url(#eye)"/>
+    <ellipse cx="58" cy="32" rx="8.5" ry="7.5" fill="url(#eye)"/>
+    <!-- 眼眶内血丝+微光 -->
+    <ellipse cx="42" cy="32" rx="6" ry="5" fill="#120a04"/>
+    <ellipse cx="58" cy="32" rx="6" ry="5" fill="#120a04"/>
+    <circle cx="43" cy="32" r="2.6" fill="#a01616"/>
+    <circle cx="59" cy="32" r="2.6" fill="#a01616"/>
+    <circle cx="43.8" cy="31" r="0.8" fill="#4a0a0a" opacity="0.7"/>
+    <circle cx="59.8" cy="31" r="0.8" fill="#4a0a0a" opacity="0.7"/>
+    <!-- 眼周腐斑 -->
+    <ellipse cx="42" cy="26" rx="5" ry="2.5" fill="#1c1208" opacity="0.7"/>
+    <ellipse cx="58" cy="26" rx="5" ry="2.5" fill="#1c1208" opacity="0.7"/>
+    <!-- 塌鼻（白骨鼻梁） -->
+    <path d="M49,38 L48,43 L53,42" fill="none" stroke="#a89c80" stroke-width="2.4" stroke-linecap="round"/>
+    <!-- 撕裂大嘴 -->
+    <path d="M40,48 L60,44 Q58,56 54,58 Q50,60 46,58 Q42,56 40,48 Z" fill="#180c06" stroke="#0a0603" stroke-width="1.5"/>
+    <!-- 下颌白骨 + 獠牙 -->
+    <path d="M43,52 Q50,58 57,50" fill="none" stroke="#c8c0a8" stroke-width="0"/>
+    <path d="M44,48 L47,60 L51,48 Z" fill="#dcd4c0" stroke="#a89c80" stroke-width="1"/>
+    <path d="M54,47 L57,58 L60,47 Z" fill="#dcd4c0" stroke="#a89c80" stroke-width="1"/>
+    <path d="M48,49 L49,55 L53,48 Z" fill="#e8e0cc" stroke="#b4a888" stroke-width="1"/>
+    <!-- 嘴角血污 -->
+    <ellipse cx="60" cy="51" rx="6" ry="4" fill="url(#blood)"/>
+    <path d="M60,55 L64,60" stroke="#6a1414" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+  </g>
+
+  <!-- 破旧瓜皮帽（灰暗） -->
+  <g>
+    <path d="M32,18 Q50,2 68,18 Q50,10 32,18 Z" fill="#1c1420" stroke="#0a060c" stroke-width="2"/>
+    <path d="M33,18 Q50,11 67,18 L67,21 Q50,13 33,21 Z" fill="#2a2030"/>
+    <!-- 帽上破洞 -->
+    <circle cx="56" cy="12" r="2.5" fill="#0a060c"/>
+    <!-- 帽前暗红宝珠 -->
+    <ellipse cx="50" cy="10" rx="3.5" ry="4" fill="#6a1414" stroke="#320a0a" stroke-width="1.2"/>
+    <circle cx="50" cy="10" r="1" fill="#8a1e1e" opacity="0.8"/>
+  </g>
+
+  <!-- 额头黄符（褪色破损镇尸符） -->
+  <g transform="rotate(-7 50 20)">
+    <rect x="40" y="14" width="20" height="22" rx="2" fill="#b89a2a" stroke="#6a5410" stroke-width="1.4"/>
+    <!-- 破损缺角 -->
+    <path d="M50,14 L56,14 L52,18 Z" fill="url(#robe)" opacity="0.4"/>
+    <!-- 褪色朱砂符 -->
+    <path d="M44,19 L52,20 M43,24 L50,25 M45,28 L51,30 M47,32 L51,33" stroke="#6a1010" stroke-width="1.6" stroke-linecap="round" opacity="0.8"/>
+    <!-- 符纸半焦黑边 -->
+    <path d="M40,14 L60,14 M40,36 L60,36" stroke="#0a06044" stroke-width="1"/>
+  </g>
+
+  <!-- 空中弥漫雾气/尘埃 -->
+  <g fill="#8a9c6c" opacity="0.08">
+    <circle cx="10" cy="30" r="2"/><circle cx="78" cy="20" r="1.5"/><circle cx="20" cy="90" r="1.8"/><circle cx="82" cy="80" r="2"/>
+  </g>
+</svg>

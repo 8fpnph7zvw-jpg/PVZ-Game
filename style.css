@@ -1,0 +1,500 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html,body { height:100%; }
+body {
+  font-family: "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+  overflow: hidden;
+  user-select: none;
+  display:flex; align-items:center; justify-content:center;
+  background: #7ec0e8;
+}
+
+/* =================== 动态天空背景 =================== */
+#sky {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #1a2026 0%, #2a2524 45%, #332a26 60%, #221a18 100%);
+}
+#skySun {
+  position: absolute;
+  top: 20px; left: 12%;
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff8c0, #ffd94d 60%, #ffb43d 100%);
+  box-shadow: 0 0 50px 20px rgba(255,230,120,.7), 0 0 120px 60px rgba(255,210,80,.3);
+  animation: sunFloat 6s ease-in-out infinite;
+}
+@keyframes sunFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(10px)} }
+
+.cloud {
+  position: absolute;
+  width: 180px; height: 50px;
+  background: rgba(255,255,255,.85);
+  border-radius: 40px;
+  box-shadow: 0 6px 14px rgba(0,0,0,.06);
+  animation: drift linear infinite;
+}
+.cloud::before, .cloud::after {
+  content:""; position:absolute; background: inherit; border-radius:50%;
+}
+.cloud::before { width:70px; height:70px; top:-30px; left:28px; }
+.cloud::after { width:52px; height:52px; top:-22px; left:95px; }
+.c1 { top:8%; animation-duration:60s; }
+.c2 { top:22%; width:140px; height:40px; animation-duration:80s; animation-delay:-30s; }
+.c3 { top:4%; width:120px; height:36px; animation-duration:95s; animation-delay:-55s; }
+@keyframes drift { from{transform:translateX(-220px)} to{transform:translateX(110vw)} }
+
+.bird {
+  position: absolute;
+  font-size: 22px;
+  color:#444;
+  animation: fly linear infinite;
+  text-shadow: -6px 0 currentColor;
+}
+.bird::before { content:"~"; }
+.b1 { top:16%; animation-duration:22s; animation-delay:-5s; }
+.b2 { top:9%; animation-duration:30s; animation-delay:-15s; }
+@keyframes fly { from{transform:translateX(-60px) translateY(0)} 25%{transform:translateY(-16px)} 50%{transform:translateY(6px)} to{transform:translateX(110vw) translateY(-4px)} }
+
+/* 风车 */
+.windmill { position:absolute; top:14%; left:20%; width:60px; height:130px; }
+.wm-body {
+  position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+  width:16px; height:100px; background:#a0c0d8; border-radius:4px;
+  box-shadow: inset -3px 0 3px rgba(0,0,0,.2);
+}
+.wm-blades {
+  position:absolute; top:14px; left:50%; transform:translateX(-50%);
+  width:90px; height:90px; margin-left:-45px; margin-top:0;
+  background: conic-gradient(from 0deg,
+    #e8e8e8 0deg 30deg, #c8d8e8 30deg 60deg,
+    #e8e8e8 60deg 90deg, #c8d8e8 90deg 120deg,
+    #e8e8e8 120deg 150deg, #c8d8e8 150deg 180deg,
+    #e8e8e8 180deg 210deg, #c8d8e8 210deg 240deg,
+    #e8e8e8 240deg 270deg, #c8d8e8 270deg 300deg,
+    #e8e8e8 300deg 330deg, #c8d8e8 330deg 360deg);
+  border-radius:50%;
+  -webkit-mask: radial-gradient(circle, transparent 18%, #000 19%);
+  mask: radial-gradient(circle, transparent 18%, #000 19%);
+  animation: spin 6s linear infinite;
+}
+@keyframes spin { to { transform:rotate(360deg); } }
+
+.hill { position:absolute; bottom:32%; border-radius:50% 50% 0 0; }
+.h1 { left:-10%; width:700px; height:200px; background:#8fce6f; }
+.h2 { right:-10%; width:800px; height:250px; background:#7dbb5f; top:46%; }
+
+/* 围栏 */
+#fence {
+  position: absolute; bottom:34%; left:0; right:0; height:26px;
+  background:
+    repeating-linear-gradient(90deg, #b8863b 0 16px, transparent 16px 34px);
+  opacity:.9;
+}
+#fence::after {
+  content:""; position:absolute; top:8px; left:0; right:0; height:6px; background:#a3742f;
+  box-shadow: 0 10px 0 #a3742f;
+}
+
+/* =================== 游戏主体 =================== */
+#game {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+}
+
+/* ---------- 关卡名横幅 ---------- */
+#stageName {
+  position:absolute; top:8px; left:50%; transform:translateX(-50%);
+  z-index: 15; pointer-events:none;
+  font-size: 26px; font-weight:900; color:#5a3a10;
+  background: rgba(255,246,200,.9);
+  padding: 4px 26px; border-radius: 20px;
+  border: 2px solid #a3742f;
+  box-shadow: 0 4px 10px rgba(0,0,0,.25);
+  animation: billboard 3s ease-in-out forwards;
+}
+#stageName.hidden { display:none; }
+@keyframes billboard { 0%{opacity:0; transform:translateX(-50%) scale(.6)} 15%{opacity:1; transform:translateX(-50%) scale(1.05)} 25%{transform:translateX(-50%) scale(1)} 80%{opacity:1} 100%{opacity:0} }
+
+/* ---------- HUD ---------- */
+#hud {
+  width: 850px; height: 58px;
+  border-radius: 12px 12px 4px 4px;
+  background: linear-gradient(#3a3226, #2e2820 55%, #241e16);
+  border: 3px solid #14110c;
+  border-bottom: none;
+  display:flex; align-items:center; padding:0 16px; gap:20px;
+  box-shadow: 0 -4px 12px rgba(0,0,0,.6), inset 0 2px 0 rgba(120,90,50,.22);
+  position:relative; z-index:30;
+}
+#sunDisplay, #waveDisplay, #scoreDisplay {
+  font-size: 22px; font-weight:800; color:#c8c0a8;
+  text-shadow: 0 2px 0 rgba(0,0,0,.6);
+  display:flex; align-items:center; gap:6px;
+}
+#sunDisplay { font-size:26px; color:#b89a2a; }
+.hud-btn {
+  padding:8px 18px; font-size:16px; font-weight:700;
+  background: linear-gradient(#3a3a32,#2a2a24); color:#c8c8b0;
+  border:2px solid #101012; border-radius:8px; cursor:pointer;
+  box-shadow:0 2px 0 rgba(0,0,0,.5);
+  transition:transform .08s, filter .15s;
+}
+.hud-btn:hover{filter:brightness(1.3); transform:translateY(-1px)}
+.hud-btn:active{transform:translateY(1px); box-shadow:none}
+.hud-btn.primary{ margin-left:auto; background:linear-gradient(#6a2e24,#4a1e18); border-color:#1a0c08; }
+
+/* ---------- BOSS 血条 ---------- */
+#bossBar {
+  width: 850px; margin-top:4px; padding:4px 12px;
+  background: rgba(15,15,20,.75); border-radius:8px;
+  display:flex; align-items:center; gap:10px; z-index:25;
+}
+#bossBar.hidden { display:none; }
+.boss-label{ font-size:15px; font-weight:800; color:#ff7a6a; white-space:nowrap; }
+.boss-track{ flex:1; height:16px; background:#2a1a1a; border-radius:8px; overflow:hidden; border:2px solid #000; }
+#bossFill{ height:100%; width:100%; background:linear-gradient(#ff5a4d,#c01220); transition:width .2s; }
+
+/* ---------- 侧栏 ---------- */
+#sidebar {
+  position:absolute; left:0; top:50%; transform:translateY(-50%);
+  max-height:92vh; width:112px; overflow-y:auto;
+  background: linear-gradient(160deg,#3a3226,#2a241c);
+  border:3px solid #14110c; border-radius:14px;
+  padding:12px 10px;
+  display:flex; flex-direction:column; gap:9px; align-items:center;
+  box-shadow:0 8px 24px rgba(0,0,0,.6), inset 0 2px 0 rgba(120,90,50,.2);
+  z-index:20; scrollbar-width:thin;
+}
+.card{
+  width:90px; height:94px; flex-shrink:0;
+  background:linear-gradient(#322e26,#26221c);
+  border:3px solid #4a3e2a; border-radius:10px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  cursor:pointer; position:relative;
+  box-shadow:0 4px 6px rgba(0,0,0,.55), inset 0 2px 0 rgba(140,115,80,.16);
+  transition:transform .1s, box-shadow .1s;
+}
+.card.shovel{ background:linear-gradient(#3a3630,#2a2824); border-color:#2c2a26; }
+.card:hover:not(.disabled){transform:translateY(-4px) scale(1.03); box-shadow:0 8px 14px rgba(0,0,0,.6)}
+.card.selected{ border-color:#8a2e1e; background:linear-gradient(#4a2a22,#3a2018); box-shadow:0 0 16px rgba(160,40,25,.55); transform:translateY(-4px); }
+.card.disabled{ opacity:.45; cursor:not-allowed; filter:grayscale(.4); }
+.card.disabled::after{ content:""; position:absolute; inset:0; background:repeating-linear-gradient(45deg,transparent 0 6px,rgba(0,0,0,.2) 6px 12px); border-radius:7px; }
+.card-emoji{ font-size:34px; line-height:1.1; filter:drop-shadow(0 2px 1px rgba(0,0,0,.3)); display:flex; align-items:center; justify-content:center; height:38px; width:100%; }
+.card-emoji img{ height:38px; width:auto; object-fit:contain; pointer-events:none; }
+.card-name{ font-size:11.5px; font-weight:800; color:#b0a888; margin-top:2px; text-align:center; }
+.card-cost{ position:absolute; bottom:3px; right:6px; font-size:14px; font-weight:800; color:#d8b84a; background:rgba(10,8,6,.7); padding:1px 5px; border-radius:6px; }
+.card-cd{ content:""; position:absolute; left:0; right:0; bottom:0; height:0; background:rgba(0,0,0,.6); border-radius:7px; pointer-events:none; transition:height .25s linear; }
+.card-message{ font-size:12px; color:#fff2bf; text-align:center; min-height:18px; width:100px; margin-top:2px; font-weight:700; text-shadow:0 1px 2px #000; }
+
+/* ---------- 棋盘 ---------- */
+#board {
+  position:relative; width:850px; height:560px;
+  border-radius:0 0 12px 12px;
+  background:
+    /* 暗角/压抑氛围 */
+    radial-gradient(140% 90% at 50% 30%, transparent 55%, rgba(0,0,0,.5) 100%),
+    /* 幽暗血雾高光 */
+    radial-gradient(100% 55% at 50% -15%, rgba(120,40,30,.25), transparent 60%),
+    /* 暗黑枯土 */
+    linear-gradient(to bottom, #2b3a24 0%, #22301e 55%, #1c2a18 78%, #1a2416 100%);
+  border:3px solid #141c10; border-top:none;
+  box-shadow:0 10px 30px rgba(0,0,0,.8), inset 0 0 60px rgba(0,0,0,.55);
+  overflow:hidden; cursor:cell;
+}
+/* 腐朽霉菌纹理 */
+#board::before{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(1.5px 2.5px at 12% 8%, rgba(20,40,60,.35) 50%, transparent 51%),
+    radial-gradient(2px 3px at 33% 22%, rgba(140,160,100,.10) 50%, transparent 51%),
+    radial-gradient(1.5px 2.5px at 55% 41%, rgba(20,30,16,.4) 50%, transparent 51%),
+    radial-gradient(2px 3px at 78% 63%, rgba(90,120,70,.08) 50%, transparent 51%),
+    radial-gradient(1.5px 2.5px at 90% 28%, rgba(20,40,50,.3) 50%, transparent 51%),
+    radial-gradient(2px 3px at 20% 74%, rgba(90,110,70,.08) 50%, transparent 51%),
+    radial-gradient(1.5px 2.5px at 64% 88%, rgba(22,36,28,.35) 50%, transparent 51%);
+  background-size: 220px 180px;
+  pointer-events:none; z-index:1;
+}
+/* 种植格网（暗夜微光格） */
+#board::after{
+  content:""; position:absolute; inset:0;
+  background:
+    repeating-linear-gradient(to right, transparent 0 105px, rgba(140,180,160,.10) 105px 106.25px),
+    repeating-linear-gradient(to bottom, transparent 0 111px, rgba(140,180,160,.08) 111px 112px);
+  pointer-events:none; z-index:1;
+}
+/* 底部腐土带 */
+#soilBand{
+  position:absolute; left:0; right:0; bottom:0; height:18px; z-index:1; pointer-events:none;
+  background:linear-gradient(to bottom,#3a2c1c,#241a10);
+  border-top:2px solid rgba(0,0,0,.5);
+  box-shadow:inset 0 4px 6px rgba(0,0,0,.4);
+}
+#board.planting{ cursor:crosshair; }
+#board.paused{ filter:saturate(.5) brightness(.8); }
+/* 场景：夜晚 - 更深夜色 */
+body[data-scene="night"] #board{
+  background:
+    radial-gradient(90% 60% at 70% -10%, rgba(150,180,220,.10), transparent 55%),
+    radial-gradient(140% 90% at 50% 30%, transparent 55%, rgba(0,0,0,.55) 100%),
+    linear-gradient(to bottom,#1e2e1c 0%,#18261a 55%,#141f14 78%,#101a10 100%);
+}
+body[data-scene="night"] #board::before{ filter:brightness(.35); }
+body[data-scene="dusk"] #board{
+  background:
+    radial-gradient(100% 55% at 50% -15%, rgba(150,60,40,.35), transparent 60%),
+    radial-gradient(140% 90% at 50% 30%, transparent 55%, rgba(0,0,0,.55) 100%),
+    linear-gradient(to bottom,#44301e 0%,#3a2818 55%,#2c1e12 78%,#221810 100%);
+}
+body[data-scene="roof"] #board{
+  background:
+    radial-gradient(100% 55% at 50% -15%, rgba(120,40,30,.25), transparent 60%),
+    radial-gradient(140% 90% at 50% 30%, transparent 55%, rgba(0,0,0,.6) 100%),
+    linear-gradient(to bottom,#3a3024 0%,#2e261c 55%,#241e16 78%,#1c1812 100%);
+}
+
+/* 割草机 */
+#mower{ position:absolute; left:4px; top:0; width:80px; height:100%; display:none; align-items:center; font-size:52px; z-index:6; pointer-events:none; filter:drop-shadow(0 3px 2px rgba(0,0,0,.3)); }
+#mower.active{ display:flex; animation: mowerGo 2s ease-in forwards; }
+@keyframes mowerGo { from{transform:translateX(0)} to{transform:translateX(900px)} }
+
+/* 房子 - 暗黑荒宅 */
+#house{
+  position:absolute; left:0; top:0; bottom:0; width:76px;
+  z-index:5; pointer-events:none;
+}
+#house .h-body{
+  position:absolute; left:6px; top:120px; bottom:0; width:62px;
+  background:linear-gradient(180deg,#6a5a48,#4a3a2c);
+  border:3px solid #2e2418; border-radius:4px 4px 0 0;
+  box-shadow:inset -6px 0 10px rgba(0,0,0,.35);
+}
+#house .roof{
+  position:absolute; left:-2px; top:86px; width:76px; height:0;
+  border-left:38px solid transparent; border-right:38px solid transparent;
+  border-bottom:46px solid #4a2a1a;
+  filter:drop-shadow(0 3px 3px rgba(0,0,0,.45));
+}
+#house .roof::after{ /* 屋顶瓦楞 */
+  content:""; position:absolute; left:-38px; top:8px;
+  width:0; height:0;
+  border-left:38px solid transparent; border-right:38px solid transparent;
+  border-bottom:38px solid #b85a32;
+}
+#house .chimney{
+  position:absolute; left:44px; top:64px; width:16px; height:46px;
+  background:#8a5a34; border:2px solid #5a3a20; border-radius:2px;
+  z-index:1;
+}
+#house .chimney::after{ /* 烟 */
+  content:""; position:absolute; top:-16px; left:4px;
+  width:14px; height:20px; border-radius:50%;
+  background:rgba(200,200,200,.7);
+  animation: smoke 3s ease-in-out infinite;
+}
+@keyframes smoke{ 0%{transform:translateY(0) scale(1);opacity:.7} 100%{transform:translateY(-24px) scale(1.6);opacity:0} }
+#house .window{
+  position:absolute; width:20px; height:18px; background:#2a2618;
+  border:3px solid #4a3a2c; border-radius:2px;
+  box-shadow:inset 0 0 8px rgba(90,40,30,.28);
+}
+#house .window.w1{ left:7px; top:24px; }
+#house .window.w2{ left:35px; top:24px; }
+#house .door{
+  position:absolute; left:19px; bottom:8px; width:24px; height:40px;
+  background:#3a2a1c; border:3px solid #241a12; border-radius:12px 12px 0 0;
+}
+#house .door::after{ content:""; position:absolute; top:20px; right:5px; width:4px; height:4px; border-radius:50%; background:#7a1414; }
+#house .sign{ position:absolute; bottom:2px; left:50%; transform:translateX(-50%); font-size:11px; color:#6a5a3a; font-weight:800; white-space:nowrap; text-shadow:0 1px 0 #000; }
+
+/* 草坪装饰 - 暗黑枯草丛 */
+.lawn-deco{ position:absolute; z-index:3; pointer-events:none; opacity:.85; }
+/* 枯草叶簇 */
+.lawn-deco::before{
+  content:""; position:absolute;
+  border-left:9px solid transparent; border-right:9px solid transparent;
+  border-bottom:20px solid #2f4430;
+  transform-origin:bottom;
+  filter:drop-shadow(0 2px 1px rgba(0,0,0,.3));
+}
+.lawn-deco::after{
+  content:""; position:absolute; left:14px;
+  border-left:10px solid transparent; border-right:10px solid transparent;
+  border-bottom:22px solid #38482c;
+  filter:drop-shadow(0 2px 1px rgba(0,0,0,.3));
+}
+/* 点缀暗色腐花（纯 CSS 五瓣花，暗血色调） */
+.lawn-deco .bloom{
+  position:absolute; left:2px; top:-8px; width:16px; height:16px;
+}
+.lawn-deco .bloom::before{
+  content:""; position:absolute; inset:2px;
+  background:radial-gradient(circle at 50% 50%, #8a6a6a 28%, #6a3a2e 40%, #40201a 70%);
+  border-radius:50%;
+  box-shadow: 0 -6px 0 -1px #7a4a3a, 0 6px 0 -1px #7a4a3a, -6px 0 0 -1px #7a4a3a, 6px 0 0 -1px #7a4a3a;
+  animation:bloomPulse 3s ease-in-out infinite;
+}
+@keyframes bloomPulse{ 0%,100%{transform:scale(1)} 50%{transform:scale(1.15) rotate(8deg)} }
+.deco1{ left:120px; top:24px; }.deco1 .bloom{ left:14px; top:0; }
+.deco2{ left:355px; top:130px; }.deco2 .bloom{ left:-6px; top:-10px; }
+.deco3{ left:560px; top:24px; }.deco3 .bloom{ left:16px; top:-6px; transform:scale(.8); }
+.deco4{ left:180px; top:250px; transform:scale(1.35); }.deco4 .bloom{ left:8px; top:-12px; }
+.deco5{ left:420px; top:360px; transform:scale(1.25); }.deco5 .bloom{ left:-4px; top:-4px; transform:scale(.9); }
+.deco6{ left:640px; top:440px; }.deco6 .bloom{ left:16px; top:-8px; }
+.stone-deco{ left:760px; top:300px; width:26px; height:18px; background:#9aa0a6; border-radius:40% 60% 40% 60%; transform:rotate(20deg); box-shadow:2px 3px 2px rgba(0,0,0,.2); }
+.stone-deco::before,.stone-deco::after{ display:none; }
+
+/* 墓碑（夜晚关卡） */
+#gravestone{
+  position:absolute; left:700px; top:40px; font-size:34px; z-index:3; pointer-events:none;
+  filter:drop-shadow(0 3px 2px rgba(0,0,0,.3));
+}
+#gravestone.hidden{ display:none; }
+
+.cell{ position:absolute; width:106.25px; height:112px; border-right:1px dashed rgba(255,255,255,.2); border-bottom:1px dashed rgba(255,255,255,.16); transition:background .1s; z-index:2; }
+.cell.hover{ background:rgba(30,200,60,.4); box-shadow:inset 0 0 0 2px #2fd45c; border-radius:8px; }
+.cell.hover.danger{ background:rgba(230,60,40,.4); box-shadow:inset 0 0 0 2px #ff5a3d; }
+
+#warningBanner{
+  position:absolute; top:46%; left:50%; transform:translate(-50%,-50%);
+  z-index:40; pointer-events:none;
+  font-size:34px; font-weight:900; color:#fff; white-space:nowrap;
+  text-shadow:0 0 12px #ff4433, 0 0 30px #ff0000, 0 3px 0 #a00;
+  background:rgba(180,20,20,.5); padding:10px 26px; border-radius:12px;
+  border:3px solid #ff8877;
+  animation:warningPulse .5s ease-in-out infinite alternate;
+}
+#warningBanner.hidden{ display:none; }
+@keyframes warningPulse{ from{transform:translate(-50%,-50%) scale(1)} to{transform:translate(-50%,-50%) scale(1.06)} }
+
+/* =================== 植物 =================== */
+.plant{ position:absolute; z-index:10; width:106px; height:106px; display:flex; align-items:flex-end; justify-content:center; animation:plantPop .3s cubic-bezier(.34,1.56,.64,1); }
+.plant .p-main{ width:auto; height:84px; object-fit:contain; filter:drop-shadow(0 4px 3px rgba(0,0,0,.35)); pointer-events:none; }
+@keyframes plantPop{ 0%{transform:scale(0)} 60%{transform:scale(1.18)} 100%{transform:scale(1)} }
+.plant.hit .p-main{ animation:hitShake .2s; }
+@keyframes hitShake{ 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+.plant.die{ animation:plantFade .38s forwards; }
+@keyframes plantFade{ to{transform:scale(.2) rotate(45deg); opacity:0} }
+.plant-hp{ position:absolute; bottom:6px; left:50%; transform:translateX(-50%); width:50%; height:6px; background:rgba(0,0,0,.5); border-radius:3px; overflow:hidden; z-index:2; }
+.plant-hp>div{ height:100%; background:linear-gradient(#7ee65a,#3fb026); border-radius:3px; transition:width .2s; }
+.plant[data-type="cherry"] .p-main{ animation:cherryGlow 1.2s ease-in-out infinite; }
+.plant[data-type="potatomine"] .p-main{ animation:cherryGlow 2s ease-in-out infinite; }
+.plant[data-type="torchwood"] .p-main{ animation:torchGlow 1s ease-in-out infinite; }
+@keyframes cherryGlow{ 0%,100%{filter:drop-shadow(0 0 4px #ff3030)} 50%{filter:drop-shadow(0 0 16px #ff6060)} }
+@keyframes torchGlow{ 0%,100%{filter:drop-shadow(0 0 8px #ff6600)} 50%{filter:drop-shadow(0 0 20px #ffaa00)} }
+.plant.anim-shoot .p-main{ transform:translateX(-7px); transition:transform .05s; }
+
+/* =================== 拟人化僵尸（SVG 主体） =================== */
+.zombie{
+  position:absolute; z-index:12; bottom:14px; width:92px; height:82px;
+  filter:drop-shadow(0 4px 3px rgba(0,0,0,.5));
+}
+/* 僵尸主体（对应种类 SVG，自带帽子/道具/配色） */
+.z-body{
+  position:absolute; bottom:2px; left:50%; transform:translateX(-50%);
+  height:80px; width:auto; object-fit:contain;
+  transform-origin:50% 90%;
+  animation:zombieWalk .7s ease-in-out infinite;
+  display:block;
+  pointer-events:none;
+}
+
+/* 走路摇晃 */
+@keyframes zombieWalk{
+  0%,100%{transform:translateX(-50%) rotate(-4deg) translateY(0)}
+  25%{transform:translateX(-50%) rotate(2deg) translateY(-2px)}
+  75%{transform:translateX(-50%) rotate(4deg) translateY(0)}
+}
+
+/* 不同种类：各自 SVG 已带独立配色/帽子，无需换色 */
+
+/* 攻击（啃食） */
+.zombie.attacking .z-body{ animation: chomp .4s infinite; }
+@keyframes chomp{
+  0%,100%{transform:translateX(-50%) translateX(3px) rotate(6deg)}
+  50%{transform:translateX(-50%) translateX(-4px) rotate(-8deg)}
+}
+/* 死亡 */
+.zombie.dying{ transition:all .7s; filter:grayscale(1) brightness(1.6) drop-shadow(0 0 12px #fff); transform:rotate(-85deg) translateY(40px) scale(.7); opacity:0; }
+
+/* 血条 */
+.hp-bar{ position:absolute; bottom:-8px; left:50%; transform:translateX(-50%); width:80%; height:7px; background:rgba(40,0,0,.6); border-radius:4px; overflow:hidden; border:1px solid rgba(0,0,0,.4); z-index:15; }
+.hp-bar>div{ height:100%; background:linear-gradient(#5cff4a,#2fae24); border-radius:4px; transition:width .2s; }
+
+/* ---------- BOSS ---------- */
+.zombie.boss{ bottom:0; width:140px; height:150px; z-index:13; }
+.zombie.boss .z-body{ height:142px; }
+.zombie.boss .hp-bar{ width:90%; height:10px; bottom:-12px; }
+.zombie.boss .z-body{ animation-duration:1s; }
+
+/* =================== 豌豆 / 阳光 / 特效 =================== */
+.pea{ position:absolute; z-index:11; width:20px; height:20px; background:radial-gradient(circle at 35% 30%,#e2ff7a,#74b51f 60%,#54901a); border-radius:50%; box-shadow:0 0 8px rgba(150,220,50,.7); pointer-events:none; }
+.pea.snow{ background:radial-gradient(circle at 35% 30%,#effffe,#66c7ee 60%,#2f9fd0); box-shadow:0 0 8px rgba(140,210,255,.9); }
+.pea.fire{ background:radial-gradient(circle at 35% 30%,#ffe08a,#ff7a2c 60%,#d54a10); box-shadow:0 0 10px rgba(255,140,40,.9); }
+
+.sun{ position:absolute; z-index:30; font-size:40px; cursor:pointer; filter:drop-shadow(0 0 10px #fff8a0); animation:twinkle 1.5s ease-in-out infinite; line-height:1; pointer-events:auto; }
+.sun:hover{ transform:scale(1.2); filter:drop-shadow(0 0 16px #ffffcf); }
+@keyframes twinkle{ 0%,100%{opacity:1} 50%{opacity:.7} }
+
+.float-text{ position:absolute; z-index:50; pointer-events:none; font-size:20px; font-weight:900; color:#fff; text-shadow:0 2px 2px rgba(0,0,0,.6); animation:floatUp 1s ease-out forwards; white-space:nowrap; }
+.float-text.gold{ color:#ffe25a; }
+.float-text.score{ color:#7dff6a; }
+.float-text.boom{ color:#ff7a3d; font-size:32px; }
+@keyframes floatUp{ 0%{opacity:0; transform:translateY(0)} 15%{opacity:1} 100%{opacity:0; transform:translateY(-46px)} }
+
+.particle{ position:absolute; z-index:40; pointer-events:none; font-size:24px; animation:partFly .7s ease-out forwards; }
+@keyframes partFly{ to{ transform:translate(var(--dx),var(--dy)) scale(.3) rotate(120deg); opacity:0; } }
+.hit-spark{ position:absolute; z-index:45; pointer-events:none; width:8px; height:8px; border-radius:50%; background:#ffe25a; box-shadow:0 0 8px #ffcf3d; animation:spark .3s ease-out forwards; }
+@keyframes spark{ to{ transform:scale(2); opacity:0; } }
+
+/* =================== 遮罩 / 界面 =================== */
+.overlay{ position:absolute; inset:6px; background:rgba(30,40,20,.78); backdrop-filter:blur(3px); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:100; border-radius:14px; }
+.overlay.hidden{ display:none; }
+.overlay .title{ font-size:56px; font-weight:900; color:#ffd23e; text-shadow:0 4px 0 #7a5200, 0 0 30px rgba(255,200,50,.5); margin-bottom:10px; display:flex; align-items:center; gap:12px; }
+.overlay .subtitle{ font-size:24px; color:#eaffd0; margin-bottom:18px; }
+.start-tips{ background:rgba(0,0,0,.4); padding:16px 30px; border-radius:14px; margin-bottom:24px; border:2px solid rgba(255,255,255,.15); }
+.start-tips p{ font-size:19px; color:#fff; margin:6px 0; text-align:left; }
+.overlay button{ padding:15px 48px; font-size:23px; font-weight:800; background:linear-gradient(#6cb84a,#45912e); color:#fff; border:3px solid #1d5a14; border-radius:14px; cursor:pointer; box-shadow:0 6px 0 #1d5a14, 0 10px 24px rgba(0,0,0,.4); transition:transform .08s, box-shadow .08s; }
+.overlay button:hover{ transform:translateY(-2px); filter:brightness(1.1); }
+.overlay button:active{ transform:translateY(4px); box-shadow:0 2px 0 #1d5a14; }
+#gameOver h1{ font-size:44px; font-weight:900; color:#ff5544; text-shadow:0 4px 0 #700; margin-bottom:12px; }
+
+/* 关卡选择 */
+#levelList{ display:flex; flex-direction:column; gap:12px; width:80%; max-width:520px; }
+.level-btn{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 26px; font-size:20px; font-weight:800; width:100%;
+  background:linear-gradient(#c8b47a,#a8904e); color:#3d2c08;
+  border:3px solid #6b5420; border-radius:12px; cursor:pointer;
+  box-shadow:0 5px 0 #6b5420; transition:transform .08s, filter .12s;
+}
+.level-btn:hover{ filter:brightness(1.08); transform:translateY(-2px); }
+.level-btn:active{ transform:translateY(3px); box-shadow:0 2px 0 #6b5420; }
+.level-btn.locked{ opacity:.5; cursor:not-allowed; }
+.level-btn .lvl-emoji{ font-size:30px; }
+.level-btn .lvl-desc{ font-size:14px; color:#5a4a18; }
+
+/* 场景氛围切换 */
+body[data-scene="night"] #sky{
+  background:linear-gradient(to bottom,#050a14 0%,#0a1322 45%,#0f1a2e 60%,#0c1419 100%);
+}
+body[data-scene="night"] #skySun{
+  background:radial-gradient(circle,#c8d2e8,#8a96b8 60%,#5a6688 100%);
+  box-shadow:0 0 40px 18px rgba(160,170,200,.28), 0 0 100px 50px rgba(120,130,170,.12);
+}
+body[data-scene="dusk"] #sky{
+  background:linear-gradient(to bottom,#3a1812 0%,#4a2a1a 45%,#50301c 60%,#241812 100%);
+}
+body[data-scene="roof"] #sky{
+  background:linear-gradient(to bottom,#191224 0%,#2a1e34 45%,#33243e 60%,#1a1610 100%);
+}
+body[data-scene="roof"] #skySun{
+  background:radial-gradient(circle,#4a3a5a,#6a4a72 60%,#7a4864 100%);
+}

@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <radialGradient id="stone" cx="0.4" cy="0.3" r="0.9">
+      <stop offset="0" stop-color="#6e6254"/>
+      <stop offset="0.5" stop-color="#4a4236"/>
+      <stop offset="1" stop-color="#241e16"/>
+    </radialGradient>
+    <!-- 暗火 -->
+    <radialGradient id="flame" cx="0.5" cy="0.85" r="0.8">
+      <stop offset="0" stop-color="#ffd04a"/>
+      <stop offset="0.45" stop-color="#ff6a10"/>
+      <stop offset="0.8" stop-color="#c23a08"/>
+      <stop offset="1" stop-color="#7a1408"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ff8a20" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#ff8a20" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="50" cy="90" rx="34" ry="7" fill="#000" opacity="0.5"/>
+
+  <!-- 石桩身 -->
+  <rect x="28" y="36" width="44" height="56" rx="10" fill="url(#stone)" stroke="#18140e" stroke-width="3"/>
+  <!-- 石块拼缝 -->
+  <path d="M28,52 L72,52 M28,68 L72,68" stroke="#18140e" stroke-width="2" opacity="0.7"/>
+  <!-- 风化坑 -->
+  <g fill="#3a342a" opacity="0.7"><circle cx="40" cy="76" r="2.5"/><circle cx="60" cy="58" r="2"/></g>
+  <!-- 裂纹 -->
+  <path d="M58,36 L56,48" stroke="#18140e" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+
+  <!-- 岩石拟人脸 -->
+  <!-- 凹陷眼 -->
+  <ellipse cx="41" cy="46" rx="6" ry="5.5" fill="#141008"/>
+  <ellipse cx="59" cy="46" rx="6" ry="5.5" fill="#141008"/>
+  <!-- 暗火燃烧的眼 -->
+  <circle cx="41" cy="46" r="2.8" fill="#ff8a20" opacity="0.9"/>
+  <circle cx="59" cy="46" r="2.8" fill="#ff8a20" opacity="0.9"/>
+  <circle cx="41.5" cy="45.4" r="1" fill="#ffd86a" opacity="0.8"/>
+  <circle cx="59.5" cy="45.4" r="1" fill="#ffd86a" opacity="0.8"/>
+  <!-- 燃烧的眉 -->
+  <path d="M34,39 Q41,35 48,40" fill="none" stroke="#ff6a10" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M52,40 Q59,35 66,39" fill="none" stroke="#ff6a10" stroke-width="2.4" stroke-linecap="round"/>
+  <!-- 抿嘴(坚毅) -->
+  <path d="M43,58 Q50,62 57,58" fill="none" stroke="#141008" stroke-width="2.6" stroke-linecap="round"/>
+
+  <!-- 头顶暗火（燃烧发髻） -->
+  <g>
+    <path d="M50,18 Q38,30 42,44 Q46,34 50,38 Q52,30 56,36 Q62,28 58,18 Q54,10 50,18 Z" fill="url(#flame)" stroke="#7a1408" stroke-width="1.6"/>
+    <path d="M50,26 Q44,32 46,38 Q48,32 50,36 Q52,30 54,34 Q57,30 54,26 Q52,22 50,26 Z" fill="#ffd04a"/>
+    <path d="M50,32 Q48,35 49,37 Q50,35 50,37 Q51,35 52,37 Q51,34 50,32 Z" fill="#fff8c0"/>
+    <!-- 边缘暗红火星 -->
+    <circle cx="42" cy="40" r="1.2" fill="#c23a08"/>
+    <circle cx="60" cy="32" r="1" fill="#c23a08"/>
+  </g>
+  <!-- 火光投影 -->
+  <ellipse cx="50" cy="36" rx="30" ry="20" fill="url(#glow)"/>
+
+  <!-- 飘散火星 -->
+  <g fill="#ff8a20" opacity="0.8">
+    <circle cx="32" cy="14" r="1.4"/><circle cx="68" cy="10" r="1.2"/><circle cx="52" cy="6" r="1.6"/><circle cx="40" cy="6" r="1"/>
+  </g>
+  <!-- 地面余光 -->
+  <ellipse cx="50" cy="88" rx="28" ry="5" fill="#ff6a10" opacity="0.18"/>
+
+  <g fill="#8a9c6c" opacity="0.08"><circle cx="12" cy="24" r="2"/><circle cx="90" cy="20" r="1.6"/></g>
+</svg>

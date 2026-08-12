@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 122" width="100" height="122">
+  <defs>
+    <!-- 暗黑花瓣：腐败焦枯 -->
+    <radialGradient id="petal" cx="0.5" cy="0.12" r="0.95">
+      <stop offset="0" stop-color="#8a6a2a"/>
+      <stop offset="0.5" stop-color="#5a4218"/>
+      <stop offset="0.85" stop-color="#3a2a0e"/>
+      <stop offset="1" stop-color="#1a1206"/>
+    </radialGradient>
+    <!-- 泛病态暗橙花瓣 -->
+    <radialGradient id="petal2" cx="0.5" cy="0.15" r="1">
+      <stop offset="0" stop-color="#7a5420"/>
+      <stop offset="0.55" stop-color="#4a3612"/>
+      <stop offset="1" stop-color="#1c1406"/>
+    </radialGradient>
+    <!-- 焦黑花心 -->
+    <radialGradient id="center" cx="0.4" cy="0.3" r="0.8">
+      <stop offset="0" stop-color="#2c1c0a"/>
+      <stop offset="0.6" stop-color="#1c1206"/>
+      <stop offset="1" stop-color="#080604"/>
+    </radialGradient>
+    <!-- 枯藤茎 -->
+    <linearGradient id="stem" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1e2a12"/>
+      <stop offset="0.5" stop-color="#3a4a22"/>
+      <stop offset="1" stop-color="#141c0a"/>
+    </linearGradient>
+    <!-- 枯叶 -->
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3a4a1e"/>
+      <stop offset="1" stop-color="#141c0a"/>
+    </linearGradient>
+    <!-- 苔藓斑 -->
+    <radialGradient id="moss" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#4a6428" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#1a2410" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 地面暗影 -->
+  <ellipse cx="50" cy="114" rx="36" ry="7" fill="#000" opacity="0.55"/>
+
+  <!-- 枯藤茎（扭曲） -->
+  <path d="M50,40 Q48,60 50,84 Q52,100 50,112" fill="none" stroke="url(#stem)" stroke-width="7" stroke-linecap="round"/>
+  <!-- 茎上倒刺/瘤节 -->
+  <circle cx="50" cy="62" r="2.5" fill="#1e2a12"/>
+  <circle cx="51" cy="80" r="2" fill="#1e2a12"/>
+  <!-- 茎上苔藓 -->
+  <ellipse cx="49" cy="70" rx="4" ry="2.5" fill="url(#moss)"/>
+
+  <!-- 枯叶（蜷曲下垂的小手） -->
+  <path d="M26,78 Q8,60 4,78 Q14,96 30,86" fill="url(#leaf)" stroke="#0e1408" stroke-width="2"/>
+  <!-- 枯叶虫洞 -->
+  <circle cx="15" cy="78" r="1.8" fill="#0e1408"/>
+  <!-- 右枯叶 -->
+  <path d="M74,82 Q92,66 96,84 Q86,98 70,90" fill="url(#leaf)" stroke="#0e1408" stroke-width="2"/>
+  <circle cx="85" cy="82" r="1.8" fill="#0e1408"/>
+
+  <!-- 暗黑花瓣（萎垂、参差、边缘焦黑） -->
+  <g stroke="#1a1206" stroke-width="1.6">
+    <!-- 后排萎垂花瓣 -->
+    <ellipse cx="50" cy="18" rx="9" ry="19" fill="url(#petal2)" transform="rotate(8 50 18)"/>
+    <ellipse cx="32" cy="24" rx="9" ry="18" fill="url(#petal2)" transform="rotate(-24 32 24)"/>
+    <ellipse cx="68" cy="24" rx="9" ry="18" fill="url(#petal2)" transform="rotate(24 68 24)"/>
+    <ellipse cx="18" cy="40" rx="9" ry="17" fill="url(#petal2)" transform="rotate(-52 18 40)"/>
+    <ellipse cx="82" cy="40" rx="9" ry="17" fill="url(#petal2)" transform="rotate(52 82 40)"/>
+    <!-- 前排下垂花瓣 -->
+    <ellipse cx="22" cy="56" rx="9" ry="17" fill="url(#petal)" transform="rotate(-88 22 56)"/>
+    <ellipse cx="78" cy="56" rx="9" ry="17" fill="url(#petal)" transform="rotate(88 78 56)"/>
+    <ellipse cx="36" cy="70" rx="9" ry="17" fill="url(#petal)" transform="rotate(-138 36 70)"/>
+    <ellipse cx="64" cy="70" rx="9" ry="17" fill="url(#petal)" transform="rotate(138 64 70)"/>
+    <ellipse cx="50" cy="75" rx="9" ry="17" fill="url(#petal)"/>
+  </g>
+  <!-- 花瓣边缘焦黑干枯线 -->
+  <g stroke="#0a0804" stroke-width="1.2" stroke-linecap="round" opacity="0.8">
+    <path d="M50,14 L50,20 M34,56 L33,62 M66,56 L67,62"/>
+  </g>
+  <!-- 一片已脱落的焦花瓣（地上） -->
+  <ellipse cx="79" cy="108" rx="5" ry="9" fill="#3a2a0e" transform="rotate(70 79 108)" opacity="0.8"/>
+
+  <!-- 焦黑花心（凹陷） -->
+  <circle cx="50" cy="49" rx="25" ry="24" fill="url(#center)" stroke="#0a0804" stroke-width="2.5"/>
+  <!-- 花心内圈凹陷 -->
+  <ellipse cx="50" cy="49" rx="18" ry="17" fill="#120c06"/>
+  <!-- 花心干枯颗粒（发黑） -->
+  <g fill="#1c1408">
+    <circle cx="44" cy="40" r="1.7"/><circle cx="53" cy="38" r="1.7"/><circle cx="61" cy="42" r="1.7"/>
+    <circle cx="39" cy="49" r="1.7"/><circle cx="48" cy="47" r="1.7"/><circle cx="57" cy="46" r="1.7"/>
+    <circle cx="43" cy="57" r="1.7"/><circle cx="52" cy="56" r="1.7"/><circle cx="62" cy="54" r="1.7"/>
+    <circle cx="48" cy="65" r="1.7"/><circle cx="58" cy="63" r="1.7"/>
+  </g>
+  <!-- 花心腐斑 -->
+  <ellipse cx="56" cy="44" rx="7" ry="6" fill="#2a1808" opacity="0.8"/>
+  <ellipse cx="43" cy="58" rx="6" ry="5" fill="#1c1006" opacity="0.7"/>
+
+  <!-- 拟人腐化脸 -->
+  <!-- 凹陷空洞眼（黑洞） -->
+  <ellipse cx="42" cy="48" rx="5" ry="5.5" fill="#050302"/>
+  <ellipse cx="58" cy="48" rx="5" ry="5.5" fill="#050302"/>
+  <!-- 眼内幽绿微光 -->
+  <circle cx="42.5" cy="48.5" r="2" fill="#4a7a2a" opacity="0.7"/>
+  <circle cx="58.5" cy="48.5" r="2" fill="#4a7a2a" opacity="0.7"/>
+  <!-- 眼周腐黑 -->
+  <ellipse cx="42" cy="43" rx="5.5" ry="2.5" fill="#0a0603" opacity="0.8"/>
+  <ellipse cx="58" cy="43" rx="5.5" ry="2.5" fill="#0a0603" opacity="0.8"/>
+  <!-- 蜷曲苦笑嘴（诡异） -->
+  <path d="M40,58 Q50,65 60,57" fill="none" stroke="#050302" stroke-width="2.4" stroke-linecap="round"/>
+  <!-- 嘴上开裂 -->
+  <path d="M50,61 L50,66" stroke="#050302" stroke-width="1.6" stroke-linecap="round"/>
+  <!-- 额头裂痕 -->
+  <path d="M46,38 L50,34 L54,38" fill="none" stroke="#0a0603" stroke-width="1.6" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- 弥漫尘土/孢子 -->
+  <g fill="#8a9c6c" opacity="0.1">
+    <circle cx="8" cy="28" r="2"/><circle cx="90" cy="18" r="1.5"/><circle cx="14" cy="96" r="1.8"/><circle cx="86" cy="92" r="2.2"/>
+  </g>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <!-- 腐血果肉 -->
+    <radialGradient id="fruit" cx="0.4" cy="0.32" r="0.9">
+      <stop offset="0" stop-color="#a03028"/>
+      <stop offset="0.55" stop-color="#6a1414"/>
+      <stop offset="1" stop-color="#2e0608"/>
+    </radialGradient>
+    <radialGradient id="fruit2" cx="0.45" cy="0.35" r="0.9">
+      <stop offset="0" stop-color="#8a2420"/>
+      <stop offset="0.6" stop-color="#521010"/>
+      <stop offset="1" stop-color="#240404"/>
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="50" cy="88" rx="40" ry="8" fill="#000" opacity="0.5"/>
+
+  <!-- 枯藤 -->
+  <path d="M50,16 Q50,28 50,34" fill="none" stroke="#1e2a12" stroke-width="4" stroke-linecap="round"/>
+  <!-- 腐叶 -->
+  <path d="M50,22 Q34,16 32,4 Q46,4 50,18" fill="#3a4a22" stroke="#10180a" stroke-width="2"/>
+  <!-- 引信（滋滋冒火） -->
+  <path d="M50,16 Q58,8 53,0" fill="none" stroke="#5a4420" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="53" cy="0" r="3.5" fill="#ff6a10"/>
+  <circle cx="53" cy="0" r="1.8" fill="#ffd04a"/>
+  <g fill="#ff8a20" opacity="0.9">
+    <circle cx="60" cy="2" r="2.6"/><circle cx="45" cy="2" r="2.2"/><circle cx="56" cy="9" r="1.8"/><circle cx="63" cy="10" r="1.6"/>
+  </g>
+
+  <!-- 左果（腐烂爆裂） -->
+  <g>
+    <circle cx="36" cy="62" r="26" fill="url(#fruit)" stroke="#1a0202" stroke-width="3"/>
+    <ellipse cx="26" cy="51" rx="10" ry="7" fill="#c04838" opacity="0.5"/>
+    <!-- 爆裂缝 -->
+    <path d="M30,44 L44,56 L36,66 L48,78" fill="none" stroke="#1a0202" stroke-width="2.2" stroke-linecap="round"/>
+    <!-- 缝内透出暗红血腔 -->
+    <path d="M33,48 L40,55 L35,62 L42,72" stroke="#3a0606" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+    <!-- 凹陷眼 -->
+    <ellipse cx="30" cy="62" rx="5.5" ry="5" fill="#160202"/>
+    <ellipse cx="45" cy="62" rx="5.5" ry="5" fill="#160202"/>
+    <circle cx="30.5" cy="62.5" r="2.2" fill="#ff4a2a" opacity="0.75"/>
+    <circle cx="45.5" cy="62.5" r="2.2" fill="#ff4a2a" opacity="0.75"/>
+    <!-- 咬紧牙缝 -->
+    <path d="M30,72 L38,72 L34,76 Z" fill="#e8dcc8" stroke="#8a6a44" stroke-width="1"/><path d="M34,72 L34,75" stroke="#8a6a44" stroke-width="0.8"/>
+  </g>
+
+  <!-- 右果 -->
+  <g>
+    <circle cx="63" cy="60" r="26" fill="url(#fruit2)" stroke="#1a0202" stroke-width="3"/>
+    <ellipse cx="53" cy="49" rx="10" ry="7" fill="#b03a30" opacity="0.5"/>
+    <path d="M54,38 L66,52 L58,62 L70,76" fill="none" stroke="#1a0202" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M57,42 L63,50 L58,58 L64,70" stroke="#2e0404" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+    <ellipse cx="57" cy="60" rx="5.5" ry="5" fill="#160202"/>
+    <ellipse cx="72" cy="60" rx="5.5" ry="5" fill="#160202"/>
+    <circle cx="57.5" cy="60.5" r="2.2" fill="#ff4a2a" opacity="0.75"/>
+    <circle cx="72.5" cy="60.5" r="2.2" fill="#ff4a2a" opacity="0.75"/>
+    <path d="M55,70 L63,70 L59,74 Z" fill="#e8dcc8" stroke="#8a6a44" stroke-width="1"/><path d="M59,70 L59,73" stroke="#8a6a44" stroke-width="0.8"/>
+  </g>
+
+  <!-- 流下血滴 -->
+  <circle cx="32" cy="84" r="2" fill="#5a1010"/>
+  <circle cx="66" cy="82" r="1.8" fill="#5a1010"/>
+
+  <g fill="#8a9c6c" opacity="0.1"><circle cx="10" cy="24" r="2"/><circle cx="90" cy="20" r="1.6"/></g>
+</svg>

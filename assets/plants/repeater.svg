@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <radialGradient id="flesh" cx="0.4" cy="0.3" r="0.85">
+      <stop offset="0" stop-color="#4a6a34"/>
+      <stop offset="0.5" stop-color="#2e4420"/>
+      <stop offset="1" stop-color="#141c0c"/>
+    </radialGradient>
+    <radialGradient id="bone" cx="0.5" cy="0.4" r="0.7">
+      <stop offset="0" stop-color="#d8d0bc"/>
+      <stop offset="1" stop-color="#8a8470"/>
+    </radialGradient>
+    <linearGradient id="stem" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1e2a12"/>
+      <stop offset="0.5" stop-color="#3a4a22"/>
+      <stop offset="1" stop-color="#10180a"/>
+    </linearGradient>
+  </defs>
+
+  <ellipse cx="50" cy="94" rx="28" ry="6" fill="#000" opacity="0.5"/>
+
+  <g stroke="url(#stem)" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M22,80 Q10,86 6,94"/>
+    <path d="M78,80 Q92,84 95,92"/>
+  </g>
+  <path d="M50,38 L50,84" fill="none" stroke="url(#stem)" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="48" cy="52" r="1.6" fill="#1e2a12"/><circle cx="52" cy="66" r="1.6" fill="#1e2a12"/>
+
+  <!-- 骨化躯干 -->
+  <ellipse cx="50" cy="45" rx="27" ry="25" fill="url(#flesh)" stroke="#0a1006" stroke-width="2.5"/>
+  <path d="M50,20 Q68,23 73,40 Q68,31 55,25 Q50,23 45,25 Q30,31 26,40 Q30,23 50,20 Z" fill="url(#bone)" stroke="#6a6450" stroke-width="1.4"/>
+  <path d="M48,25 L49,34 M52,26 L54,35" stroke="#6a6450" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/>
+
+  <!-- 藤蔓缠绕 -->
+  <g stroke="url(#stem)" stroke-width="2.6" stroke-linecap="round" fill="none" opacity="0.9">
+    <path d="M34,42 C28,50 34,58 42,54"/>
+    <path d="M66,40 C72,50 66,58 58,54"/>
+  </g>
+
+  <!-- 双炮口（上下双骨嘴） -->
+  <g>
+    <!-- 上炮 -->
+    <circle cx="50" cy="47" r="10" fill="#120c06"/>
+    <circle cx="50" cy="47" r="10" fill="none" stroke="url(#bone)" stroke-width="2.6"/>
+    <path d="M50,47 L82,39" fill="none" stroke="url(#bone)" stroke-width="7.5" stroke-linecap="round"/>
+    <circle cx="82" cy="39" r="4.5" fill="#241a10"/>
+    <circle cx="50" cy="47" r="5.5" fill="#1a0c04"/>
+    <!-- 下炮 -->
+    <circle cx="50" cy="57" r="9" fill="#120c06"/>
+    <circle cx="50" cy="57" r="9" fill="none" stroke="url(#bone)" stroke-width="2.4"/>
+    <path d="M50,57 L82,55" fill="none" stroke="url(#bone)" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="82" cy="55" r="4.2" fill="#241a10"/>
+    <circle cx="50" cy="57" r="5" fill="#1a0c04"/>
+  </g>
+
+  <!-- 幽绿眼（一对，因双管分居上方） -->
+  <ellipse cx="39" cy="41" rx="5.5" ry="5" fill="#050302"/>
+  <ellipse cx="61" cy="41" rx="5.5" ry="5" fill="#050302"/>
+  <circle cx="39.5" cy="41.5" r="2" fill="#5a8a34" opacity="0.75"/>
+  <circle cx="61.5" cy="41.5" r="2" fill="#5a8a34" opacity="0.75"/>
+
+  <!-- 头顶双枯藤 -->
+  <g fill="none" stroke="url(#stem)" stroke-width="2.6" stroke-linecap="round">
+    <path d="M48,21 Q44,7 50,1"/><path d="M54,21 Q60,5 52,0"/>
+  </g>
+
+  <g fill="#8a9c6c" opacity="0.1"><circle cx="8" cy="26" r="2"/><circle cx="88" cy="18" r="1.5"/><circle cx="82" cy="86" r="2"/></g>
+</svg>

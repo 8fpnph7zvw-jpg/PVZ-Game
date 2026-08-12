@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <radialGradient id="flesh" cx="0.4" cy="0.3" r="0.85">
+      <stop offset="0" stop-color="#4a6a34"/>
+      <stop offset="0.5" stop-color="#2e4420"/>
+      <stop offset="1" stop-color="#141c0c"/>
+    </radialGradient>
+    <!-- 骨化颈部 -->
+    <radialGradient id="bone" cx="0.5" cy="0.4" r="0.7">
+      <stop offset="0" stop-color="#d8d0bc"/>
+      <stop offset="1" stop-color="#8a8470"/>
+    </radialGradient>
+    <!-- 藤蔓茎 -->
+    <linearGradient id="stem" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1e2a12"/>
+      <stop offset="0.5" stop-color="#3a4a22"/>
+      <stop offset="1" stop-color="#10180a"/>
+    </linearGradient>
+  </defs>
+
+  <ellipse cx="50" cy="94" rx="28" ry="6" fill="#000" opacity="0.5"/>
+
+  <!-- 根部触须（枯藤） -->
+  <g stroke="url(#stem)" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M22,80 Q10,86 6,94"/>
+    <path d="M78,80 Q92,84 95,92"/>
+    <path d="M32,84 Q26,92 24,96"/>
+    <path d="M68,84 Q74,92 76,96"/>
+  </g>
+
+  <!-- 主茎 -->
+  <path d="M50,40 L50,84" fill="none" stroke="url(#stem)" stroke-width="7" stroke-linecap="round"/>
+  <!-- 茎上倒刺 -->
+  <circle cx="48" cy="55" r="1.6" fill="#1e2a12"/><circle cx="52" cy="70" r="1.6" fill="#1e2a12"/>
+
+  <!-- 骨化头骨/颅 -->
+  <g>
+    <!-- 藤蔓缠绕的骨颅 -->
+    <ellipse cx="50" cy="46" rx="27" ry="25" fill="url(#flesh)" stroke="#0a1006" stroke-width="2.5"/>
+    <!-- 顶部白骨化 -->
+    <path d="M50,21 Q68,24 72,40 Q68,32 55,26 Q50,24 45,26 Q30,32 28,40 Q32,24 50,21 Z" fill="url(#bone)" stroke="#6a6450" stroke-width="1.4"/>
+    <!-- 白骨裂缝 -->
+    <path d="M48,26 L49,35 M52,27 L54,36" stroke="#6a6450" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/>
+    <!-- 骨化下部（下颌） -->
+    <path d="M36,52 Q50,68 64,52 Q50,72 36,52 Z" fill="url(#bone)" opacity="0.7"/>
+  </g>
+
+  <!-- 藤蔓缠绕躯干 -->
+  <g stroke="url(#stem)" stroke-width="2.6" stroke-linecap="round" fill="none" opacity="0.9">
+    <path d="M34,42 C28,50 34,58 42,54"/>
+    <path d="M66,40 C72,50 66,58 58,54"/>
+    <path d="M40,60 C36,68 42,74 50,70"/>
+  </g>
+
+  <!-- 炮口（张开的骨嘴，周围白骨） -->
+  <g>
+    <circle cx="50" cy="53" r="11" fill="#120c06"/>
+    <circle cx="50" cy="53" r="11" fill="none" stroke="url(#bone)" stroke-width="3"/>
+    <!-- 炮管（白骨延长） -->
+    <path d="M50,53 L80,48" fill="none" stroke="url(#bone)" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="80" cy="48" r="5" fill="#241a10"/>
+    <!-- 炮口内暗红暗光 -->
+    <circle cx="50" cy="53" r="6" fill="#1a0c04"/>
+  </g>
+
+  <!-- 幽绿空洞眼 -->
+  <ellipse cx="40" cy="44" rx="6" ry="5.5" fill="#050302"/>
+  <ellipse cx="60" cy="44" rx="6" ry="5.5" fill="#050302"/>
+  <circle cx="40.5" cy="44.5" r="2.2" fill="#5a8a34" opacity="0.75"/>
+  <circle cx="60.5" cy="44.5" r="2.2" fill="#5a8a34" opacity="0.75"/>
+  <!-- 眼周腐黑 -->
+  <ellipse cx="40" cy="39" rx="5" ry="2.2" fill="#0a0603" opacity="0.8"/>
+  <ellipse cx="60" cy="39" rx="5" ry="2.2" fill="#0a0603" opacity="0.8"/>
+
+  <!-- 头顶枯藤芽（触须扭曲） -->
+  <g fill="none" stroke="url(#stem)" stroke-width="2.6" stroke-linecap="round">
+    <path d="M48,22 Q44,8 50,2"/>
+    <path d="M54,22 Q60,6 52,0"/>
+  </g>
+
+  <!-- 尘土孢子 -->
+  <g fill="#8a9c6c" opacity="0.1">
+    <circle cx="8" cy="26" r="2"/><circle cx="88" cy="18" r="1.5"/><circle cx="82" cy="86" r="2"/>
+  </g>
+</svg>

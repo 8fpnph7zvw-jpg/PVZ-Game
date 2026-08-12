@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 180" width="110" height="142">
+  <defs>
+    <radialGradient id="flesh" cx="0.42" cy="0.28" r="0.85">
+      <stop offset="0" stop-color="#78885e"/>
+      <stop offset="0.5" stop-color="#4a5a34"/>
+      <stop offset="0.8" stop-color="#30381e"/>
+      <stop offset="1" stop-color="#161c0c"/>
+    </radialGradient>
+    <!-- 黑金朝服 -->
+    <radialGradient id="robe" cx="0.42" cy="0.15" r="1.15">
+      <stop offset="0" stop-color="#3a3226"/>
+      <stop offset="0.5" stop-color="#241e14"/>
+      <stop offset="1" stop-color="#0e0c06"/>
+    </radialGradient>
+    <radialGradient id="blood" cx="0.4" cy="0.4" r="0.7">
+      <stop offset="0" stop-color="#7a1616"/>
+      <stop offset="1" stop-color="#3a0808" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="eye" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#120a04"/>
+      <stop offset="1" stop-color="#3a1408"/>
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="70" cy="172" rx="55" ry="10" fill="#000" opacity="0.6"/>
+
+  <!-- 粗腿 -->
+  <g stroke="#181006" stroke-width="14" stroke-linecap="round" fill="none">
+    <path d="M55,148 L44,174"/>
+    <path d="M85,148 L96,170"/>
+  </g>
+  <!-- 腰部露出的白骨 -->
+  <path d="M50,140 L56,150 L48,152 L52,160 L44,158 Q50,136 50,140 Z" fill="#c8c0a8" opacity="0.8"/>
+
+  <!-- 黑金朝服 -->
+  <path d="M40,66 L34,148 Q70,164 106,148 L100,66 Q70,52 40,66 Z" fill="url(#robe)" stroke="#0a0804" stroke-width="4"/>
+  <!-- 金线滚边(破损) -->
+  <path d="M43,72 L39,146 Q70,158 101,146 L97,72" fill="none" stroke="#8a6a20" stroke-width="2.5" opacity="0.7"/>
+  <!-- 袍上大片血污 -->
+  <ellipse cx="56" cy="96" rx="18" ry="13" fill="url(#blood)"/>
+  <ellipse cx="86" cy="128" rx="20" ry="14" fill="url(#blood)"/>
+  <ellipse cx="62" cy="60" rx="10" ry="6" fill="url(#blood)" opacity="0.6"/>
+  <!-- 撕裂破口 -->
+  <path d="M48,84 L58,78 L52,92 L64,84 L54,98" fill="#241818" stroke="#0a0804" stroke-width="1"/>
+  <path d="M84,112 L94,106 L88,120 L98,112 L90,124" fill="#241818" stroke="#0a0804" stroke-width="1"/>
+  <!-- 袍皱 -->
+  <g stroke="#0e0c06" stroke-width="2" stroke-linecap="round" opacity="0.6">
+    <path d="M46,100 Q60,108 82,104 M44,118 Q62,128 92,122"/>
+  </g>
+
+  <!-- 龙纹补子(斑驳) -->
+  <g>
+    <rect x="52" y="74" width="36" height="42" rx="3" fill="#141008" stroke="#5c4a18" stroke-width="2.5"/>
+    <path d="M70,80 L78,92 L70,104 L62,92 Z" fill="#9a7a28" stroke="#5a4416" stroke-width="1.5" opacity="0.8"/>
+    <path d="M58,80 C63,84 77,84 82,80 M58,104 C63,100 77,100 82,104" stroke="#9a7a28" stroke-width="2" fill="none" opacity="0.6"/>
+    <!-- 补子上血渍 -->
+    <ellipse cx="72" cy="92" rx="8" ry="6" fill="url(#blood)" opacity="0.8"/>
+  </g>
+
+  <!-- 金纹腰带(残破) -->
+  <rect x="46" y="122" width="48" height="15" rx="3" fill="#3a2a12" stroke="#140e04" stroke-width="2.5"/>
+  <rect x="65" y="122" width="15" height="15" rx="2" fill="#8a6a1e" stroke="#4a3410" stroke-width="2"/>
+
+  <!-- 双臂前伸(粗) -->
+  <g stroke="url(#robe)" stroke-width="17" stroke-linecap="round" fill="none">
+    <path d="M44,84 L10,62"/>
+    <path d="M46,96 L12,82"/>
+  </g>
+  <!-- 白骨利爪 -->
+  <g stroke="#d8d0bc" stroke-width="3.4" stroke-linecap="round">
+    <path d="M-8,58 L-16,50 M-4,56 L-10,46 M6,57 L2,47"/>
+    <path d="M-6,78 L-14,71 M-2,77 L-8,67 M8,78 L3,69"/>
+  </g>
+  <circle cx="-10" cy="57" r="3.5" fill="#c8c0a8"/>
+  <circle cx="-8" cy="76" r="3.5" fill="#c8c0a8"/>
+
+  <!-- 巨大青黑腐烂头颅 -->
+  <g transform="rotate(3 70 44)">
+    <circle cx="70" cy="46" r="34" fill="url(#flesh)" stroke="#1e2410" stroke-width="4"/>
+    <!-- 大面积露骨(左半) -->
+    <path d="M78,16 Q92,30 86,52 Q78,66 64,72 Q74,70 84,56 Q92,40 80,20 Z" fill="#c8c0a8" stroke="#a89c80" stroke-width="1.6" opacity="0.95"/>
+    <!-- 骨缝 -->
+    <path d="M80,22 L78,34 M82,44 L78,52" stroke="#a89c80" stroke-width="1.4" stroke-linecap="round" opacity="0.9"/>
+    <!-- 头顶凹陷腐洞 -->
+    <ellipse cx="64" cy="24" rx="9" ry="6" fill="#2a1c08" opacity="0.8"/>
+    <!-- 血污斑 -->
+    <ellipse cx="66" cy="38" rx="8" ry="6" fill="url(#blood)"/>
+  </g>
+
+  <!-- 血眼(塌陷黑洞大眼) -->
+  <g transform="rotate(3 70 44)">
+    <ellipse cx="58" cy="46" rx="10" ry="11" fill="url(#eye)"/>
+    <ellipse cx="86" cy="46" rx="10" ry="11" fill="url(#eye)"/>
+    <circle cx="60" cy="48" r="4.5" fill="#b01616"/>
+    <circle cx="88" cy="47" r="4.5" fill="#b01616"/>
+    <circle cx="60" cy="46" r="1.6" fill="#4a0a0a"/>
+    <circle cx="88" cy="45" r="1.6" fill="#4a0a0a"/>
+    <ellipse cx="58" cy="38" rx="8" ry="3" fill="#1a1006" opacity="0.8"/>
+    <ellipse cx="86" cy="38" rx="8" ry="3" fill="#1a1006" opacity="0.8"/>
+  </g>
+
+  <!-- 血盆大口 + 獠牙 -->
+  <g transform="rotate(3 70 44)">
+    <path d="M52,64 Q70,82 90,60" fill="#2a0c04" stroke="#0e0602" stroke-width="4"/>
+    <!-- 下颌骨露 -->
+    <path d="M56,66 Q70,78 86,62" fill="none" stroke="#c8c0a8" stroke-width="3" opacity="0.7"/>
+    <!-- 巨獠牙 -->
+    <path d="M60,63 L64,78 L68,64 Z" fill="#e0d8c4" stroke="#a89c80" stroke-width="2"/>
+    <path d="M80,62 L83,76 L87,63 Z" fill="#e0d8c4" stroke="#a89c80" stroke-width="2"/>
+    <path d="M66,64 L67,72 L71,65 Z" fill="#e8e0cc" stroke="#b4a888" stroke-width="1.6"/>
+    <!-- 口内暗红血 -->
+    <ellipse cx="70" cy="70" rx="12" ry="6" fill="#4a0e0a"/>
+    <!-- 垂落血丝 -->
+    <path d="M66,76 L64,84" stroke="#6a1414" stroke-width="2.4" stroke-linecap="round" opacity="0.85"/>
+  </g>
+
+  <!-- 残破花翎顶戴(王冠破损) -->
+  <g transform="rotate(-2 70 16)">
+    <path d="M44,26 Q70,10 96,26 L96,32 Q70,18 44,32 Z" fill="#1a1420" stroke="#0a0810" stroke-width="3"/>
+    <!-- 破洞 -->
+    <circle cx="78" cy="22" r="4" fill="#0a0810"/>
+    <path d="M58,22 Q70,4 82,22 Q70,13 58,22 Z" fill="#2a2033" stroke="#120e18" stroke-width="3"/>
+    <circle cx="70" cy="10" r="6" fill="#8a1818" stroke="#3a0808" stroke-width="2"/>
+    <circle cx="70" cy="10" r="2" fill="#c03028" opacity="0.8"/>
+    <!-- 垂落花翎(破损) -->
+    <path d="M80,16 Q104,4 116,12 Q104,10 80,16 Z" fill="#4a7a8a" stroke="#24404c" stroke-width="2" opacity="0.8"/>
+    <path d="M84,18 Q112,16 120,26 Q112,20 84,18 Z" fill="#4a7a8a" stroke="#24404c" stroke-width="2" opacity="0.6"/>
+    <!-- 额上巨符(大镇尸符) -->
+    <g transform="rotate(-6 70 36)">
+      <path d="M56,26 L84,28 L82,56 L58,54 Z" fill="#a88a26" stroke="#5c4810" stroke-width="2.5" opacity="0.9"/>
+      <path d="M64,32 L78,33 M62,40 L76,42 M63,48 L77,49" stroke="#6a1010" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+      <path d="M60,26 L64,20" stroke="#a88a26" stroke-width="2"/>
+      <!-- 符上血污 -->
+      <ellipse cx="76" cy="38" rx="7" ry="6" fill="url(#blood)" opacity="0.8"/>
+    </g>
+  </g>
+
+  <!-- 弥漫血腥雾气 -->
+  <g fill="#6a1414" opacity="0.12">
+    <circle cx="18" cy="40" r="4"/><circle cx="124" cy="30" r="3.5"/><circle cx="30" cy="120" r="3"/>
+    <circle cx="118" cy="110" r="3.5"/><circle cx="10" cy="90" r="2.5"/><circle cx="130" cy="80" r="2.8"/>
+  </g>
+</svg>
